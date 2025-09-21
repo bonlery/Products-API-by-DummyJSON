@@ -24,10 +24,21 @@ main {
   gap: 2rem;
   background-color: rgba(169, 169, 169, 0.37);
   border-radius: 2rem;
-  padding: 1rem;
+  padding: 2rem 2rem 3rem 2rem;
 }
 
 .search-container{
   display: flex;
+  justify-content: space-between;
   margin: 2rem 0 0.4rem 2rem;
+}
+
+.turner{
+  display: flex;
+  gap: 0.5rem;
+  margin-right: 2rem;
+}
+
+.turner button{
+  padding: 0.2rem;
 }

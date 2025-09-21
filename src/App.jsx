@@ -9,9 +9,10 @@ function App() {
 
   useEffect(()=>{
     fetch("https://dummyjson.com/products").then((response)=>response.json()).then((data)=>{
+    fetch("https://dummyjson.com/products?limit=10&skip="+skip).then((response)=>response.json()).then((data)=>{
       setProducts(data.products);
     })
-  },[]);
+  },[skip]);
 
 
   function hanldleSearch(e){
@@ -47,12 +48,26 @@ function App() {
     
   }
 
+  function handleBackPage(){
+    if((skip-10)==-10){}
+    else{
+      setSkip(skip-10)
+    }
+  }
+
   return (
     <>
       <NavBar/>
       <main>
         <div className="search-container">
-          <input type="text" id="searchField" onChange={hanldleSearch}/>
+          <div className="">
+            <label htmlFor="searchField">Search: </label>
+            <input type="text" id="searchField" onChange={hanldleSearch}/>
+          </div>
+          <div className="turner">
+            <button onClick={handleBackPage}>Back</button>
+            <button onClick={()=>setSkip(skip+10)}>Forward</button>
+          </div>
         </div>
         <div className="products-container">
            {products &&

@@ -6,9 +6,9 @@ function App() {
 
   const [products, setProducts] = useState();
   const [product, setProduct] = useState();
+  const [skip, setSkip] = useState('');
 
   useEffect(()=>{
-    fetch("https://dummyjson.com/products").then((response)=>response.json()).then((data)=>{
     fetch("https://dummyjson.com/products?limit=10&skip="+skip).then((response)=>response.json()).then((data)=>{
       setProducts(data.products);
     })
